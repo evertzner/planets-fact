@@ -33,6 +33,9 @@ export default {
         red: {
           DEFAULT: '#D83A34'
         }
+      },
+      spacing: {
+        13: '3.25rem'
       }
     }
   },
