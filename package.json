@@ -1,7 +1,7 @@
 {
   "name": "planets-fact",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -12,7 +12,8 @@
     "lint": "prettier --check . && eslint .",
     "formatlint": "npm run format && npm run lint",
     "astro": "astro",
-    "prepare": "husky"
+    "prepare": "husky",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
