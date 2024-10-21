@@ -1,0 +1,36 @@
+---
+interface Props {
+  images: {
+    planet: string;
+    geology: string;
+    sizes: {
+      mobile: number;
+      tablet: number;
+      desktop: number;
+    };
+  };
+  name: string;
+}
+
+const { images, name } = Astro.props;
+---
+
+<div class='relative'>
+  <picture>
+    <source media='(max-width: 767px)' srcset={images.planet} width={images.sizes.mobile} />
+    <source media='(max-width: 1439px)' srcset={images.planet} width={images.sizes.tablet} />
+    <source media='(min-width: 1440px)' srcset={images.planet} width={images.sizes.desktop} />
+    <img src={images.planet} alt={name} />
+  </picture>
+  <!-- <picture class='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2'>
+    <source media='(max-width: 767px)' srcset={images.geology} width='60' />
+    <source media='(max-width: 1439px)' srcset={images.geology} width='100' />
+    <source media='(min-width: 1440px)' srcset={images.geology} width='120' />
+    <img src={images.geology} alt={name} />
+  </picture> -->
+  <img
+    src={images.geology}
+    alt={name}
+    class='absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 w-[60px] md:w-[100px] 2xl:w-[160px]'
+  />
+</div>

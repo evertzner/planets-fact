@@ -1,0 +1,22 @@
+---
+interface Props {
+  images: {
+    internal: string;
+    sizes: {
+      mobile: number;
+      tablet: number;
+      desktop: number;
+    };
+  };
+  name: string;
+}
+
+const { images, name } = Astro.props;
+---
+
+<picture>
+  <source media='(max-width: 767px)' srcset={images.internal} width={images.sizes.mobile} />
+  <source media='(max-width: 1439px)' srcset={images.internal} width={images.sizes.tablet} />
+  <source media='(min-width: 1440px)' srcset={images.internal} width={images.sizes.desktop} />
+  <img src={images.internal} alt={name} />
+</picture>

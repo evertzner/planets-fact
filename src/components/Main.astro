@@ -1,37 +1,10 @@
 ---
 import Button from './Button.astro';
 import data from '../utils/data.json';
+import Overview from './Overview.astro';
+import Structure from './Structure.astro';
+import Surface from './Surface.astro';
 ---
-
-<script>
-  const ButtonsContainer = document.getElementById('ButtonsContainer')!;
-
-  function changeState(newState: string) {
-    console.log(newState);
-    ButtonsContainer.setAttribute('data-state', newState);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const buttons = ButtonsContainer.querySelectorAll('button');
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        changeState(button.dataset.state!);
-        if (button.dataset.state === ButtonsContainer.dataset.state) {
-          button.classList.remove('opacity-50', 'border-transparent');
-
-          button.classList.add('border-light-blue', 'opacity-100');
-        }
-
-        ButtonsContainer.querySelectorAll('button').forEach((btn) => {
-          if (btn !== button) {
-            btn.classList.remove('border-light-blue', 'opacity-100');
-            btn.classList.add('opacity-50', 'border-transparent');
-          }
-        });
-      });
-    });
-  });
-</script>
 
 <main class='flex flex-col self-stretch items-center'>
   <!-- <Button name='overview' index='01' active />
@@ -68,118 +41,142 @@ import data from '../utils/data.json';
   <div class='h-[305px] w-full flex items-center justify-center'>
     {
       data.map((planet) => {
-        if (planet.name === 'Venus') {
+        if (planet.name === 'Earth') {
           return (
-            <picture>
-              <source
-                media='(max-width: 767px)'
-                srcset={planet.images.planet}
-                width={planet.images.sizes.mobile}
-              />
-              <source
-                media='(max-width: 1439px)'
-                srcset={planet.images.planet}
-                width={planet.images.sizes.tablet}
-              />
-              <source
-                media='(min-width: 1440px)'
-                srcset={planet.images.planet}
-                width={planet.images.sizes.desktop}
-              />
-              <img src={planet.images.planet} alt={planet.name} />
-            </picture>
+            <>
+              <div id='Overview' class='flex'>
+                <Overview images={planet.images} name={planet.name} />
+              </div>
+              <div id='Structure' class='hidden'>
+                <Structure images={planet.images} name={planet.name} />
+              </div>
+              <div id='Surface' class='hidden'>
+                <Surface images={planet.images} name={planet.name} />
+              </div>
+            </>
           );
         }
       })
     }
   </div>
-  <div class='flex flex-col px-6 items-center gap-8 self-stretch'>
-    <div class='flex flex-col items-center gap-4 self-stretch'>
-      <div
-        class='text-white text-center font-antonio text-[40px] leading-[normal] font-light uppercase'
-      >
-        Mercury
-      </div>
-      <p
-        class='text-white text-opacity-80 text-center text-[15px] leading-[22px] self-stretch font-extralight'
-      >
-        Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit
-        around the Sun takes 87.97 Earth days, the shortest of all the Sun's planets. Mercury is one
-        of four terrestrial planets in the Solar System, and is a rocky body like Earth.
-      </p>
-    </div>
-    <div class='text-white opacity-50 font-thin leading-[25px] flex gap-1'>
-      Source:
-      <a
-        href='#'
-        class='font-normal underline underline-offset-2 flex justify-center items-center gap-1'
-      >
-        Wikipedia
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='12'
-          height='13'
-          viewBox='0 0 12 13'
-          fill='none'
-        >
-          <path
-            opacity='0.5'
-            fill-rule='evenodd'
-            clip-rule='evenodd'
-            d='M9.75002 0.5C10.3698 0.5 10.8998 0.720059 11.3397 1.16009C11.7797 1.60013 11.9998 2.13022 11.9998 2.74998V10.2499C11.9998 10.8697 11.7797 11.3997 11.3396 11.8398C10.8997 12.2799 10.3697 12.5 9.74994 12.5H2.24998C1.63025 12.5 1.10021 12.2799 0.660095 11.8398C0.220059 11.3997 0 10.8696 0 10.2499V2.74998C0 2.13022 0.220059 1.60021 0.660095 1.16009C1.10021 0.720059 1.63025 0.5 2.24998 0.5H9.75002ZM9.69524 7.21084C9.89825 7.12224 9.99996 6.96867 9.99996 6.74993H9.99999V2.99998C9.99999 2.86455 9.95051 2.74733 9.85165 2.64843C9.75254 2.54943 9.63531 2.4999 9.49991 2.4999H5.75007C5.53133 2.4999 5.3776 2.60156 5.2891 2.80463C5.20061 3.01825 5.23703 3.20044 5.39853 3.35149L6.52354 4.47647L2.35161 8.64845C2.25264 8.74734 2.20313 8.86459 2.20313 8.99988C2.20313 9.13522 2.25264 9.25264 2.35161 9.35142L3.14847 10.1484C3.24742 10.2473 3.36461 10.2969 3.50012 10.2969C3.63557 10.2969 3.75266 10.2473 3.85174 10.1484L8.02342 5.97649L9.14835 7.10147C9.24218 7.20033 9.3594 7.24989 9.49989 7.24989C9.56228 7.24989 9.62762 7.23686 9.69524 7.21084Z'
-            fill='white'></path>
-        </svg>
-      </a>
-    </div>
-  </div>
-  <div class='flex px-6 pt-7 pb-12 flex-col justify-center items-center gap-2 self-stretch'>
-    <div
-      class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
-    >
-      <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
-        Rotation Time
-      </div>
-      <div
-        class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'
-      >
-        58.6 Days
-      </div>
-    </div>
-    <div
-      class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
-    >
-      <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
-        Revolution Time
-      </div>
-      <div
-        class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'
-      >
-        87.97 days
-      </div>
-    </div>
-    <div
-      class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
-    >
-      <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
-        Radius
-      </div>
-      <div
-        class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'
-      >
-        2,439.7 km
-      </div>
-    </div>
-    <div
-      class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
-    >
-      <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
-        Agerage temp.
-      </div>
-      <div
-        class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'
-      >
-        430°c
-      </div>
-    </div>
-  </div>
 </main>
+<div class='flex flex-col px-6 items-center gap-8 self-stretch'>
+  <div class='flex flex-col items-center gap-4 self-stretch'>
+    <div
+      class='text-white text-center font-antonio text-[40px] leading-[normal] font-light uppercase'
+    >
+      Mercury
+    </div>
+    <p
+      class='text-white text-opacity-80 text-center text-[15px] leading-[22px] self-stretch font-extralight'
+    >
+      Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit
+      around the Sun takes 87.97 Earth days, the shortest of all the Sun's planets. Mercury is one
+      of four terrestrial planets in the Solar System, and is a rocky body like Earth.
+    </p>
+  </div>
+  <div class='text-white opacity-50 font-thin leading-[25px] flex gap-1'>
+    Source:
+    <a
+      href='#'
+      class='font-normal underline underline-offset-2 flex justify-center items-center gap-1'
+    >
+      Wikipedia
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='12'
+        height='13'
+        viewBox='0 0 12 13'
+        fill='none'
+      >
+        <path
+          opacity='0.5'
+          fill-rule='evenodd'
+          clip-rule='evenodd'
+          d='M9.75002 0.5C10.3698 0.5 10.8998 0.720059 11.3397 1.16009C11.7797 1.60013 11.9998 2.13022 11.9998 2.74998V10.2499C11.9998 10.8697 11.7797 11.3997 11.3396 11.8398C10.8997 12.2799 10.3697 12.5 9.74994 12.5H2.24998C1.63025 12.5 1.10021 12.2799 0.660095 11.8398C0.220059 11.3997 0 10.8696 0 10.2499V2.74998C0 2.13022 0.220059 1.60021 0.660095 1.16009C1.10021 0.720059 1.63025 0.5 2.24998 0.5H9.75002ZM9.69524 7.21084C9.89825 7.12224 9.99996 6.96867 9.99996 6.74993H9.99999V2.99998C9.99999 2.86455 9.95051 2.74733 9.85165 2.64843C9.75254 2.54943 9.63531 2.4999 9.49991 2.4999H5.75007C5.53133 2.4999 5.3776 2.60156 5.2891 2.80463C5.20061 3.01825 5.23703 3.20044 5.39853 3.35149L6.52354 4.47647L2.35161 8.64845C2.25264 8.74734 2.20313 8.86459 2.20313 8.99988C2.20313 9.13522 2.25264 9.25264 2.35161 9.35142L3.14847 10.1484C3.24742 10.2473 3.36461 10.2969 3.50012 10.2969C3.63557 10.2969 3.75266 10.2473 3.85174 10.1484L8.02342 5.97649L9.14835 7.10147C9.24218 7.20033 9.3594 7.24989 9.49989 7.24989C9.56228 7.24989 9.62762 7.23686 9.69524 7.21084Z'
+          fill='white'></path>
+      </svg>
+    </a>
+  </div>
+</div>
+<div class='flex px-6 pt-7 pb-12 flex-col justify-center items-center gap-2 self-stretch'>
+  <div
+    class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
+  >
+    <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
+      Rotation Time
+    </div>
+    <div class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'>
+      58.6 Days
+    </div>
+  </div>
+  <div
+    class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
+  >
+    <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
+      Revolution Time
+    </div>
+    <div class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'>
+      87.97 days
+    </div>
+  </div>
+  <div
+    class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
+  >
+    <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
+      Radius
+    </div>
+    <div class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'>
+      2,439.7 km
+    </div>
+  </div>
+  <div
+    class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
+  >
+    <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
+      Agerage temp.
+    </div>
+    <div class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'>
+      430°c
+    </div>
+  </div>
+</div>
+
+<script>
+  const ButtonsContainer = document.getElementById('ButtonsContainer')!;
+
+  function changeState(newState: string) {
+    ButtonsContainer.setAttribute('data-state', newState);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = ButtonsContainer.querySelectorAll('button');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        changeState(button.dataset.state!);
+        if (button.dataset.state === ButtonsContainer.dataset.state) {
+          button.classList.remove('opacity-50', 'border-transparent');
+          button.classList.add('border-light-blue', 'opacity-100');
+
+          document.querySelectorAll('#Overview, #Structure, #Surface').forEach((section) => {
+            section.classList.remove('flex');
+            section.classList.add('hidden');
+          });
+
+          const activeSection = document.getElementById(button.dataset.state!);
+          if (activeSection) {
+            activeSection.classList.add('flex');
+            activeSection.classList.remove('hidden');
+          }
+        }
+
+        ButtonsContainer.querySelectorAll('button').forEach((btn) => {
+          if (btn !== button) {
+            btn.classList.remove('border-light-blue', 'opacity-100');
+            btn.classList.add('opacity-50', 'border-transparent');
+          }
+        });
+      });
+    });
+  });
+</script>
