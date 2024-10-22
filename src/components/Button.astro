@@ -4,13 +4,15 @@ interface Props {
   name: string;
   active: boolean;
   state: string;
+  border: string;
+  background: string;
 }
 
-const { index, name, active, state } = Astro.props;
+const { index, name, active, state, border, background } = Astro.props;
 ---
 
 <button
   data-state={state}
-  class={`uppercase flex-shrink-0 text-white flex gap-4 text-[11px] font-bold leading-[25px] tracking-[1.929px] py-2 px-5 border  ${active ? 'bg-light-blue border-light-blue' : 'bg-transparent  border-white border-opacity-20'}`}
+  class={`uppercase text-white flex items-center gap-[18px] self-stretch text-[11px] font-bold leading-[25px] tracking-[1.929px] py-2 px-5 border ${border} ${background} ${active ? `${border} ${background}` : 'bg-transparent  border-white border-opacity-20'}`}
   ><span class='opacity-50'>{index}</span>{name}</button
 >

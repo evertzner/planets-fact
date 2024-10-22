@@ -1,0 +1,27 @@
+---
+import IconChevron from '../icons/IconChevron.astro';
+import data from '../utils/data.json';
+---
+
+<nav
+  id='mobileMenu'
+  class='hidden p-6 flex-col items-start self-stretch absolute top-0 bottom-0 left-0 right-0 bg-dark-blue z-30 md:hidden'
+  transition:persist
+>
+  {
+    data.map((planet) => (
+      <a
+        href={`/planet/${planet.name}`}
+        class='text-white flex py-5 justify-between items-center border-b border-white border-opacity-10 self-stretch last:border-none'
+      >
+        <div class='flex items-center gap-6 uppercase text-lg font-medium leading-[25px] tracking-[1.364px]'>
+          <span class={`w-5 h-5 rounded-full ${planet.colors.menu}`} />
+          {planet.name}
+        </div>
+        <div>
+          <IconChevron />
+        </div>
+      </a>
+    ))
+  }
+</nav>

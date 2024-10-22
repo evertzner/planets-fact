@@ -2,26 +2,30 @@
 import data from '../utils/data.json';
 import ButtonsContainer from './ButtonsContainer.astro';
 import Information from './Information.astro';
-import Data from './Data.astro';
+import Highlights from './Highlights.astro';
 import Visuals from './Visuals.astro';
 import LinksContainer from './LinksContainer.astro';
+import Menu from './Menu.astro';
 
-const planet = data.find((planet) => planet.name === 'Earth')!;
+const { name } = Astro.params;
+
+const planet = data.find((planet) => planet.name === name)!;
 ---
 
-<main class='flex flex-col self-stretch items-center'>
-  <LinksContainer />
+<main class='flex flex-col self-stretch items-center relative'>
+  <Menu />
+  <LinksContainer border={planet.colors.border} />
   <Visuals images={planet.images} name={planet.name} />
-  <div>
+  <div class='contents md:grid md:grid-cols-2 px-10 gap-10 self-stretch'>
     <Information
       name={planet.name}
       overview={planet.overview}
       structure={planet.structure}
       surface={planet.geology}
     />
-    <ButtonsContainer />
+    <ButtonsContainer border={planet.colors.border} background={planet.colors.background} />
   </div>
-  <Data
+  <Highlights
     rotationTime={planet.rotation}
     revolutionTime={planet.revolution}
     radius={planet.radius}
@@ -29,12 +33,11 @@ const planet = data.find((planet) => planet.name === 'Earth')!;
   />
 </main>
 
-<script>
-  const LinksContainer = document.getElementById('LinksContainer')!;
-  const ButtonsContainer = document.getElementById('ButtonsContainer')!;
+<script define:vars={{ planet }} is:inline>
+  const LinksContainer = document.getElementById('LinksContainer');
+  const ButtonsContainer = document.getElementById('ButtonsContainer');
 
-  function changeState(newState: string) {
-    console.log('changeState', newState);
+  function changeState(newState) {
     LinksContainer.setAttribute('data-state', newState);
     ButtonsContainer.setAttribute('data-state', newState);
 
@@ -69,37 +72,37 @@ const planet = data.find((planet) => planet.name === 'Earth')!;
     links.forEach((link) => {
       if (link.dataset.state === LinksContainer.dataset.state) {
         link.classList.remove('opacity-50', 'border-transparent');
-        link.classList.add('border-light-blue', 'opacity-100');
+        link.classList.add(planet.colors.border, 'opacity-100');
       } else {
         link.classList.add('opacity-50', 'border-transparent');
-        link.classList.remove('border-light-blue', 'opacity-100');
+        link.classList.remove(planet.colors.border, 'opacity-100');
       }
     });
 
     buttons.forEach((button) => {
       if (button.dataset.state === ButtonsContainer.dataset.state) {
         button.classList.remove('bg-transparent', 'border-white', 'border-opacity-20');
-        button.classList.add('bg-light-blue', 'border-light-blue');
+        button.classList.add(planet.colors.background, planet.colors.border);
       } else {
         button.classList.add('bg-transparent', 'border-white', 'border-opacity-20');
-        button.classList.remove('bg-light-blue', 'border-light-blue');
+        button.classList.remove(planet.colors.background, planet.colors.border);
       }
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const links = LinksContainer.querySelectorAll('button');
     const buttons = ButtonsContainer.querySelectorAll('button');
 
     links.forEach((link) => {
       link.addEventListener('click', () => {
-        changeState(link.dataset.state!);
+        changeState(link.dataset.state);
       });
     });
 
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
-        changeState(button.dataset.state!);
+        changeState(button.dataset.state);
       });
     });
   });

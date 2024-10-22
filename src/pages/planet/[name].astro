@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Main from '../../components/Main.astro';
+import data from '../../utils/data.json';
+import type { GetStaticPaths } from 'astro';
+const { name } = Astro.params;
+
+export const getStaticPaths = (() => {
+  return data.map((planet) => ({
+    params: {
+      name: planet.name
+    }
+  }));
+}) satisfies GetStaticPaths;
+---
+
+<Layout title={name}>
+  <Main />
+</Layout>

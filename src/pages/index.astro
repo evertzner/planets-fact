@@ -1,10 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Main from '../components/Main.astro';
-import Header from '../components/Header.astro';
+import data from '../utils/data.json';
+
+const firstPlanet = data[0];
+return Astro.redirect(`/planet/${firstPlanet?.name}`);
 ---
 
-<Layout title='Planet Facts'>
-  <Header />
-  <Main />
-</Layout>
+{firstPlanet?.name}

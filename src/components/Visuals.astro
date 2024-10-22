@@ -20,7 +20,7 @@ interface Props {
 const { images, name } = Astro.props;
 ---
 
-<div class='h-[305px] w-full flex items-center justify-center'>
+<div class='h-[305px] md:h-[460px] w-full flex items-center justify-center'>
   <div data-name='Overview' class='flex'>
     <Overview images={images} name={name} />
   </div>
