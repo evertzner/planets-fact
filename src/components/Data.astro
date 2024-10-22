@@ -1,0 +1,53 @@
+---
+interface DataProps {
+  rotationTime: string;
+  revolutionTime: string;
+  radius: string;
+  averageTemp: string;
+}
+
+const { rotationTime, revolutionTime, radius, averageTemp } = Astro.props as DataProps;
+---
+
+<div class='flex px-6 pt-7 pb-12 flex-col justify-center items-center gap-2 self-stretch'>
+  <div
+    class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
+  >
+    <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
+      Rotation Time
+    </div>
+    <div class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'>
+      {rotationTime}
+    </div>
+  </div>
+  <div
+    class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
+  >
+    <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
+      Revolution Time
+    </div>
+    <div class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'>
+      {revolutionTime}
+    </div>
+  </div>
+  <div
+    class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
+  >
+    <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
+      Radius
+    </div>
+    <div class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'>
+      {radius}
+    </div>
+  </div>
+  <div
+    class='flex py-2.5 px-6 justify-between items-center self-stretch border border-white border-opacity-20 text-white'
+  >
+    <div class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium'>
+      Agerage temp.
+    </div>
+    <div class='font-antonio text-xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'>
+      {averageTemp}
+    </div>
+  </div>
+</div>

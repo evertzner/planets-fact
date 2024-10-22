@@ -1,0 +1,79 @@
+---
+import IconSource from '../icons/IconSource.astro';
+
+interface InformationProps {
+  name: string;
+  overview: {
+    content: string;
+    source: string;
+  };
+  structure: {
+    content: string;
+    source: string;
+  };
+  surface: {
+    content: string;
+    source: string;
+  };
+}
+
+const { name, overview, structure, surface } = Astro.props;
+---
+
+<div class='flex flex-col px-6 items-center gap-8 self-stretch'>
+  <div class='flex flex-col items-center gap-4 self-stretch'>
+    <div
+      class='text-white text-center font-antonio text-[40px] leading-[normal] font-light uppercase'
+    >
+      {name}
+    </div>
+    <p
+      data-name='Overview'
+      class='text-white text-opacity-80 text-center text-[15px] leading-[22px] self-stretch font-extralight inline'
+    >
+      {overview.content}
+    </p>
+    <p
+      data-name='Structure'
+      class='text-white text-opacity-80 text-center text-[15px] leading-[22px] self-stretch font-extralight hidden'
+    >
+      {structure.content}
+    </p>
+    <p
+      data-name='Surface'
+      class='text-white text-opacity-80 text-center text-[15px] leading-[22px] self-stretch font-extralight hidden'
+    >
+      {surface.content}
+    </p>
+  </div>
+  <div class='text-white opacity-50 font-thin leading-[25px] flex gap-1'>
+    Source:
+    <a
+      data-name='Overview'
+      href={overview.source}
+      target='_blank'
+      class='font-normal underline underline-offset-2 flex justify-center items-center gap-1'
+    >
+      Wikipedia
+      <IconSource />
+    </a>
+    <a
+      data-name='Structure'
+      href={structure.source}
+      target='_blank'
+      class='font-normal underline underline-offset-2 hidden justify-center items-center gap-1'
+    >
+      Wikipedia
+      <IconSource />
+    </a>
+    <a
+      data-name='Surface'
+      href={surface.source}
+      target='_blank'
+      class='font-normal underline underline-offset-2 hidden justify-center items-center gap-1'
+    >
+      Wikipedia
+      <IconSource />
+    </a>
+  </div>
+</div>

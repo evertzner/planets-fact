@@ -3,13 +3,14 @@ interface ButtonProps {
   index: string;
   name: string;
   active: boolean;
+  state: string;
 }
 
-const { index, name, active } = Astro.props as ButtonProps;
+const { index, name, active, state } = Astro.props as ButtonProps;
 ---
 
 <button
-  id={name.replace(/\s/g, '')}
+  data-state={state}
   class={`uppercase flex-shrink-0 text-white flex gap-4 text-[11px] font-bold leading-[25px] tracking-[1.929px] py-2 px-5 border  ${active ? 'bg-light-blue border-light-blue' : 'bg-transparent  border-white border-opacity-20'}`}
   ><span class='opacity-50'>{index}</span>{name}</button
 >

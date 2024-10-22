@@ -1,0 +1,28 @@
+---
+import Overview from './Overview.astro';
+import Structure from './Structure.astro';
+import Surface from './Surface.astro';
+
+interface VisualsProps {
+  images: {
+    overview: string;
+    structure: string;
+    geology: string;
+  };
+  name: string;
+}
+
+const { images, name } = Astro.props;
+---
+
+<div class='h-[305px] w-full flex items-center justify-center'>
+  <div data-name='Overview' class='flex'>
+    <Overview images={images} name={name} />
+  </div>
+  <div data-name='Structure' class='hidden'>
+    <Structure images={images} name={name} />
+  </div>
+  <div data-name='Surface' class='hidden'>
+    <Surface images={images} name={name} />
+  </div>
+</div>
