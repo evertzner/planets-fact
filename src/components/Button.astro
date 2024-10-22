@@ -1,12 +1,12 @@
 ---
-interface ButtonProps {
+interface Props {
   index: string;
   name: string;
   active: boolean;
   state: string;
 }
 
-const { index, name, active, state } = Astro.props as ButtonProps;
+const { index, name, active, state } = Astro.props;
 ---
 
 <button

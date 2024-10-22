@@ -3,11 +3,16 @@ import Overview from './Overview.astro';
 import Structure from './Structure.astro';
 import Surface from './Surface.astro';
 
-interface VisualsProps {
+interface Props {
   images: {
-    overview: string;
-    structure: string;
+    planet: string;
+    internal: string;
     geology: string;
+    sizes: {
+      mobile: number;
+      tablet: number;
+      desktop: number;
+    };
   };
   name: string;
 }

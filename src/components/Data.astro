@@ -1,12 +1,12 @@
 ---
-interface DataProps {
+interface Props {
   rotationTime: string;
   revolutionTime: string;
   radius: string;
   averageTemp: string;
 }
 
-const { rotationTime, revolutionTime, radius, averageTemp } = Astro.props as DataProps;
+const { rotationTime, revolutionTime, radius, averageTemp } = Astro.props;
 ---
 
 <div class='flex px-6 pt-7 pb-12 flex-col justify-center items-center gap-2 self-stretch'>
