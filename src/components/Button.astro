@@ -12,7 +12,10 @@ const { index, name, active, state, border, background } = Astro.props;
 ---
 
 <button
+  data-active={active.toString()}
   data-state={state}
-  class={`uppercase text-white flex items-center gap-[18px] self-stretch text-[11px] font-bold leading-[25px] tracking-[1.929px] py-2 px-5 border ${border} ${background} ${active ? `${border} ${background}` : 'bg-transparent  border-white border-opacity-20'}`}
-  ><span class='opacity-50'>{index}</span>{name}</button
+  class={`uppercase text-white flex items-center gap-[18px] 2xl:gap-7 self-stretch text-[11px] 2xl:text-[15px] font-bold 2xl:font-medium leading-[25px] tracking-[1.929px] 2xl:tracking-[2.571px] py-2 px-5 2xl:py-3 2xl:px-7 data-[active=false]:hover:bg-[#D8D8D8] data-[active=false]:hover:border-transparent data-[active=false]:hover:bg-opacity-20 border data-[active=true]:${border} data-[active=true]:${background} ${border} ${background} data-[active=false]:bg-transparent data-[active=false]:border-white data-[active=false]:border-opacity-20`}
 >
+  <span class='opacity-50'>{index}</span>
+  {name}
+</button>

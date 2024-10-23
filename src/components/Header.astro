@@ -4,23 +4,23 @@ import data from '../utils/data.json';
 ---
 
 <header
-  class='flex px-6 py-4 justify-between items-center self-stretch border-b border-white border-opacity-20 md:flex-col md:px-13 md:pt-8 md:pb-7 md:flex-1 md:gap-10'
+  class='flex items-center justify-between self-stretch border-b border-white border-opacity-20 px-6 py-4 md:flex-1 md:flex-col md:gap-10 md:px-13 md:pb-7 md:pt-8 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:px-8 2xl:pt-6'
 >
   <a
-    class='text-white font-antonio text-[28px] -tracking-[1.05px] leading-[normal] uppercase'
+    class='font-antonio text-[28px] uppercase leading-[normal] -tracking-[1.05px] text-white'
     href='/'
   >
     The Planets
   </a>
-  <button id='menuToggle' class='text-white flex md:hidden' transition:persist>
+  <button id='menuToggle' class='flex text-white md:hidden' transition:persist>
     <IconHamburger />
   </button>
-  <div class='hidden md:flex justify-between items-center self-stretch'>
+  <div class='hidden items-center justify-between self-stretch md:flex 2xl:justify-start 2xl:gap-8'>
     {
       data.map((planet) => (
         <a
           href={`/planet/${planet.name}`}
-          class='text-white leading-[25px] tracking-[2px] uppercase opacity-75 text-[13px]'
+          class='text-[13px] uppercase leading-[25px] tracking-[2px] text-white opacity-75'
         >
           {planet.name}
         </a>

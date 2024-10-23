@@ -9,12 +9,15 @@ interface Props {
 const { border, background } = Astro.props;
 ---
 
-<div class='hidden md:flex md:pt-8 flex-col gap-4 md:items-start md:flex-1' id='ButtonsContainer'>
+<div
+  id='ButtonsContainer'
+  class='hidden flex-col gap-4 md:flex md:flex-1 md:items-start md:pt-8 2xl:flex-none 2xl:self-stretch 2xl:pt-0'
+>
   <Button
     name='overview'
     index='01'
     state='Overview'
-    active
+    active={true}
     border={border}
     background={background}
   />

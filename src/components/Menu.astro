@@ -5,17 +5,17 @@ import data from '../utils/data.json';
 
 <nav
   id='mobileMenu'
-  class='hidden p-6 flex-col items-start self-stretch absolute top-0 bottom-0 left-0 right-0 bg-dark-blue z-30 md:hidden'
+  class='absolute bottom-0 left-0 right-0 top-0 z-30 hidden h-screen flex-col items-start self-stretch bg-dark-blue p-6 md:hidden'
   transition:persist
 >
   {
     data.map((planet) => (
       <a
         href={`/planet/${planet.name}`}
-        class='text-white flex py-5 justify-between items-center border-b border-white border-opacity-10 self-stretch last:border-none'
+        class='flex items-center justify-between self-stretch border-b border-white border-opacity-10 py-5 text-white last:border-none'
       >
-        <div class='flex items-center gap-6 uppercase text-lg font-medium leading-[25px] tracking-[1.364px]'>
-          <span class={`w-5 h-5 rounded-full ${planet.colors.menu}`} />
+        <div class='flex items-center gap-6 text-lg font-medium uppercase leading-[25px] tracking-[1.364px]'>
+          <span class={`h-5 w-5 rounded-full ${planet.colors.menu}`} />
           {planet.name}
         </div>
         <div>

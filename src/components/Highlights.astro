@@ -10,60 +10,60 @@ const { rotationTime, revolutionTime, radius, averageTemp } = Astro.props;
 ---
 
 <div
-  class='flex px-6 md:px-10 pt-7 pb-12 md:pb-9 flex-col md:flex-row justify-center items-center gap-2 md:gap-2.5 self-stretch'
+  class='flex flex-col items-center justify-center gap-2 self-stretch px-6 pb-12 pt-7 md:flex-row md:gap-2.5 md:px-10 md:pb-9 2xl:gap-8 2xl:px-41 2xl:pb-14 2xl:pt-0'
 >
   <div
-    class='flex flex-row md:flex-col pt-2.5 md:pt-4 pb-2.5 md:pb-5 px-6 md:px-4 justify-between md:justify-center items-center md:items-start md:gap-1.5 md:flex-1 self-stretch border border-white border-opacity-20 text-white'
+    class='flex flex-row items-center justify-between self-stretch border border-white border-opacity-20 px-6 pb-2.5 pt-2.5 text-white md:flex-1 md:flex-col md:items-start md:justify-center md:gap-1.5 md:px-4 md:pb-5 md:pt-4 2xl:gap-1 2xl:px-6 2xl:pb-5 2xl:pt-5'
   >
     <div
-      class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium md:font-normal'
+      class='text-[10px] font-medium uppercase leading-[16px] tracking-[0.727px] opacity-50 md:font-normal 2xl:text-[14px] 2xl:leading-[25px] 2xl:tracking-[1px]'
     >
       Rotation Time
     </div>
     <div
-      class='font-antonio text-xl md:text-2xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'
+      class='font-antonio text-xl font-extralight uppercase leading-[normal] -tracking-[0.75px] md:text-2xl 2xl:text-[40px] 2xl:leading-[normal] 2xl:-tracking-[1.5px]'
     >
       {rotationTime}
     </div>
   </div>
   <div
-    class='flex flex-row md:flex-col pt-2.5 md:pt-4 pb-2.5 md:pb-5 px-6 md:px-4 justify-between md:justify-center items-center md:items-start md:gap-1.5 md:flex-1 self-stretch border border-white border-opacity-20 text-white'
+    class='flex flex-row items-center justify-between self-stretch border border-white border-opacity-20 px-6 pb-2.5 pt-2.5 text-white md:flex-1 md:flex-col md:items-start md:justify-center md:gap-1.5 md:px-4 md:pb-5 md:pt-4 2xl:gap-1 2xl:px-6 2xl:pb-5 2xl:pt-5'
   >
     <div
-      class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium md:font-normal'
+      class='text-[10px] font-medium uppercase leading-[16px] tracking-[0.727px] opacity-50 md:font-normal 2xl:text-[14px] 2xl:leading-[25px] 2xl:tracking-[1px]'
     >
       Revolution Time
     </div>
     <div
-      class='font-antonio text-xl md:text-2xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'
+      class='font-antonio text-xl font-extralight uppercase leading-[normal] -tracking-[0.75px] md:text-2xl 2xl:text-[40px] 2xl:leading-[normal] 2xl:-tracking-[1.5px]'
     >
       {revolutionTime}
     </div>
   </div>
   <div
-    class='flex flex-row md:flex-col pt-2.5 md:pt-4 pb-2.5 md:pb-5 px-6 md:px-4 justify-between md:justify-center items-center md:items-start md:gap-1.5 md:flex-1 self-stretch border border-white border-opacity-20 text-white'
+    class='flex flex-row items-center justify-between self-stretch border border-white border-opacity-20 px-6 pb-2.5 pt-2.5 text-white md:flex-1 md:flex-col md:items-start md:justify-center md:gap-1.5 md:px-4 md:pb-5 md:pt-4 2xl:gap-1 2xl:px-6 2xl:pb-5 2xl:pt-5'
   >
     <div
-      class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium md:font-normal'
+      class='text-[10px] font-medium uppercase leading-[16px] tracking-[0.727px] opacity-50 md:font-normal 2xl:text-[14px] 2xl:leading-[25px] 2xl:tracking-[1px]'
     >
       Radius
     </div>
     <div
-      class='font-antonio text-xl md:text-2xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'
+      class='font-antonio text-xl font-extralight uppercase leading-[normal] -tracking-[0.75px] md:text-2xl 2xl:text-[40px] 2xl:leading-[normal] 2xl:-tracking-[1.5px]'
     >
       {radius}
     </div>
   </div>
   <div
-    class='flex flex-row md:flex-col pt-2.5 md:pt-4 pb-2.5 md:pb-5 px-6 md:px-4 justify-between md:justify-center items-center md:items-start md:gap-1.5 md:flex-1 self-stretch border border-white border-opacity-20 text-white'
+    class='flex flex-row items-center justify-between self-stretch border border-white border-opacity-20 px-6 pb-2.5 pt-2.5 text-white md:flex-1 md:flex-col md:items-start md:justify-center md:gap-1.5 md:px-4 md:pb-5 md:pt-4 2xl:gap-1 2xl:px-6 2xl:pb-5 2xl:pt-5'
   >
     <div
-      class='opacity-50 text-[10px] uppercase leading-[16px] tracking-[0.727px] font-medium md:font-normal'
+      class='text-[10px] font-medium uppercase leading-[16px] tracking-[0.727px] opacity-50 md:font-normal 2xl:text-[14px] 2xl:leading-[25px] 2xl:tracking-[1px]'
     >
       Agerage temp.
     </div>
     <div
-      class='font-antonio text-xl md:text-2xl leading-[normal] -tracking-[0.75px] uppercase font-extralight'
+      class='font-antonio text-xl font-extralight uppercase leading-[normal] -tracking-[0.75px] md:text-2xl 2xl:text-[40px] 2xl:leading-[normal] 2xl:-tracking-[1.5px]'
     >
       {averageTemp}
     </div>

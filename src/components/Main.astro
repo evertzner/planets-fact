@@ -12,18 +12,22 @@ const { name } = Astro.params;
 const planet = data.find((planet) => planet.name === name)!;
 ---
 
-<main class='flex flex-col self-stretch items-center relative'>
+<main class='relative flex flex-col items-center self-stretch'>
   <Menu />
   <LinksContainer border={planet.colors.border} />
-  <Visuals images={planet.images} name={planet.name} />
-  <div class='contents md:grid md:grid-cols-2 px-10 gap-10 self-stretch'>
-    <Information
-      name={planet.name}
-      overview={planet.overview}
-      structure={planet.structure}
-      surface={planet.geology}
-    />
-    <ButtonsContainer border={planet.colors.border} background={planet.colors.background} />
+  <div class='content 2xl:grid 2xl:grid-cols-[68%_32%] 2xl:px-41 2xl:pb-22 2xl:pt-32'>
+    <Visuals images={planet.images} name={planet.name} />
+    <div
+      class='contents gap-10 self-stretch px-10 md:grid md:grid-cols-2 2xl:flex 2xl:flex-col 2xl:items-start 2xl:justify-between 2xl:gap-0 2xl:px-0'
+    >
+      <Information
+        name={planet.name}
+        overview={planet.overview}
+        structure={planet.structure}
+        surface={planet.geology}
+      />
+      <ButtonsContainer border={planet.colors.border} background={planet.colors.background} />
+    </div>
   </div>
   <Highlights
     rotationTime={planet.rotation}
@@ -83,9 +87,11 @@ const planet = data.find((planet) => planet.name === name)!;
       if (button.dataset.state === ButtonsContainer.dataset.state) {
         button.classList.remove('bg-transparent', 'border-white', 'border-opacity-20');
         button.classList.add(planet.colors.background, planet.colors.border);
+        button.dataset.active = 'true';
       } else {
         button.classList.add('bg-transparent', 'border-white', 'border-opacity-20');
         button.classList.remove(planet.colors.background, planet.colors.border);
+        button.dataset.active = 'false';
       }
     });
   }

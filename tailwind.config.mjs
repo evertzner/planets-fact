@@ -40,7 +40,9 @@ export default {
         'dark-blue': '#070724'
       },
       spacing: {
-        13: '3.25rem'
+        13: '3.25rem',
+        41: '10.25rem',
+        22: '5.5rem'
       }
     }
   },
