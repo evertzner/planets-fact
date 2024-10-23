@@ -15,7 +15,7 @@ const planet = data.find((planet) => planet.name === name)!;
 <main class='relative flex flex-col items-center self-stretch'>
   <Menu />
   <LinksContainer border={planet.colors.border} />
-  <div class='content 2xl:grid 2xl:grid-cols-[68%_32%] 2xl:px-41 2xl:pb-22 2xl:pt-32'>
+  <div class='content 2xl:grid 2xl:grid-cols-[2.5fr_1fr] 2xl:px-41 2xl:pb-22 2xl:pt-32'>
     <Visuals images={planet.images} name={planet.name} />
     <div
       class='contents gap-10 self-stretch px-10 md:grid md:grid-cols-2 2xl:flex 2xl:flex-col 2xl:items-start 2xl:justify-between 2xl:gap-0 2xl:px-0'
